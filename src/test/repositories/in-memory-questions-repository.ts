@@ -13,6 +13,11 @@ export class InMemoryQuestionsRepository implements QuestionRepository {
       this.items.splice(itemIndex, 1)
     }
 
+    async save(question: Question) {
+      const itemIndex = this.items.findIndex((item) => item.id === question.id)
+      this.items[itemIndex] = question
+    }
+
     async findBySlug(slug: string) {
       const question = this.items.find((item) => item.slug.value === slug)
   
