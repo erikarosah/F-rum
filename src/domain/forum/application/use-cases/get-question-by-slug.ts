@@ -1,28 +1,28 @@
-import { Question } from '@/domain/forum/enterprise/entities/question'
-import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository'
+import { Question } from '@/domain/forum/enterprise/entities/question';
+import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository';
 
 interface GetQuestionBySlugUseCaseRequest {
-  slug: string
+	slug: string
 }
 
 interface GetQuestionBySlugUseCaseResponse {
-  question: Question
+	question: Question
 }
 
 export class GetQuestionBySlugUseCase {
-  constructor(private questionsRepository: InMemoryQuestionsRepository) {}
+	constructor(private questionsRepository: InMemoryQuestionsRepository) { }
 
-  async execute({
-    slug,
-  }: GetQuestionBySlugUseCaseRequest): Promise<GetQuestionBySlugUseCaseResponse> {
-    const question = await this.questionsRepository.findBySlug(slug)
+	async execute({
+		slug,
+	}: GetQuestionBySlugUseCaseRequest): Promise<GetQuestionBySlugUseCaseResponse> {
+		const question = await this.questionsRepository.findBySlug(slug);
 
-    if (!question) {
-      throw new Error('Question not found.')
-    }
+		if (!question) {
+			throw new Error('Question not found.');
+		}
 
-    return {
-      question,
-    }
-  }
+		return {
+			question,
+		};
+	}
 }

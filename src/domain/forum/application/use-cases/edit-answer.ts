@@ -1,34 +1,33 @@
-import { Answer } from "../../enterprise/entities/answer";
-import { QuestionRepository } from "../repositories/question-repository";
+import { QuestionRepository } from '../repositories/question-repository';
 
 interface EditAnswerUseCaseRequest {
-    questionId: string,
-    authorId: string,
-    content: string
+	questionId: string,
+	authorId: string,
+	content: string
 }
 
-interface EditAnswerUseCaseResponse {}
+interface EditAnswerUseCaseResponse { }
 
 export class EditAnswerUseCase {
-    constructor(private questionRepository: QuestionRepository) {}
+	constructor(private questionRepository: QuestionRepository) { }
 
-    async execute({
-        questionId,
-        authorId,
-        content
-    }: EditAnswerUseCaseRequest): Promise<EditAnswerUseCaseResponse>{
-        const question =  await this.questionRepository.findById(questionId)
+	async execute({
+		questionId,
+		authorId,
+		content
+	}: EditAnswerUseCaseRequest): Promise<EditAnswerUseCaseResponse> {
+		const question = await this.questionRepository.findById(questionId);
 
-        if(!question) {
-            throw new Error('Question Not Found')
-        }
+		if (!question) {
+			throw new Error('Question Not Found');
+		}
 
-        if(authorId != question?.authorId.toString()) {
-            throw new Error('Not Allowed')
-        }
+		if (authorId != question?.authorId.toString()) {
+			throw new Error('Not Allowed');
+		}
 
-        question.content = content
+		question.content = content;
 
-        return {}
-    }
+		return {};
+	}
 }

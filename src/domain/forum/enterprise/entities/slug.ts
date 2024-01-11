@@ -1,11 +1,11 @@
 export class Slug {
-    public value: string
+	public value: string;
 
-    private constructor(value: string) {
-      this.value = value
-    }
+	private constructor(value: string) {
+		this.value = value;
+	}
   
-    static create(value: string) {
-      return new Slug(value)
-    }
+	static create(value: string) {
+		return new Slug(value);
+	}
 }

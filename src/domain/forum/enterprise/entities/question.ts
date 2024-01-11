@@ -5,13 +5,13 @@ import { Slug } from './value-objects/slug';
 import dayjs from 'dayjs';
 
 export interface QuestionProps {
-    authorId: UniqueEntityID,
-    bestAnswerId?: UniqueEntityID
-    title: string, 
-    slug: Slug,
-    content: string, 
-    createdAt: Date,
-    updatedAt?: Date
+	authorId: UniqueEntityID,
+	bestAnswerId?: UniqueEntityID
+	title: string,
+	slug: Slug,
+	content: string,
+	createdAt: Date,
+	updatedAt?: Date
 }
 
 export class Question extends Entity<QuestionProps> {
@@ -50,11 +50,11 @@ export class Question extends Entity<QuestionProps> {
 	get excerpt() {
 		return this.content.substring(0, 120).trimEnd().concat('...');
 	}
-    
-	private touch(){
+
+	private touch() {
 		this.props.updatedAt = new Date();
 	}
-    
+
 	set content(content: string) {
 		this.props.content = content;
 
@@ -70,7 +70,7 @@ export class Question extends Entity<QuestionProps> {
 	set title(title: string) {
 		this.props.title = title;
 		this.props.slug = Slug.createFromText(this.props.title);
-        
+
 		this.touch();
 	}
 
@@ -78,7 +78,7 @@ export class Question extends Entity<QuestionProps> {
 		const question = new Question({
 			...props,
 			slug: props.slug ?? Slug.createFromText(props.title),
-			createdAt: new Date(),
+			createdAt: props.createdAt ?? new Date(),
 		}, id);
 
 		return question;
