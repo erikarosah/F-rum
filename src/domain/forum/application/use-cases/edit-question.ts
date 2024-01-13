@@ -1,4 +1,4 @@
-import { QuestionRepository } from "../repositories/question-repository";
+import { QuestionRepository } from '../repositories/question-repository';
 
 interface EditQuestionUseCaseRequest {
 	authorId: string,
