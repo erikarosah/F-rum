@@ -1,4 +1,4 @@
-import { Either, left, right } from '@/core/either';
+import { Either, left, right } from '@/core/types/either';
 import { QuestionCommentRepository } from '../repositories/question-comments-repository';
 
 interface DeleteCommentOnQuestionUseCaseRequest {
