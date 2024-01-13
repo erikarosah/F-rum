@@ -1,15 +1,15 @@
 import { InMemoryQuestionCommentRepository } from '@/test/repositories/in-memory-question-comment-repository'
-import { FetchCommentsQuestion } from './fetch-comments-question'
 import { makeQuestionComment } from '@/factories/make-question-comment'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { FetchCommentsQuestionUseCase } from './fetch-comments-question'
 
 let inMemoryQuestionCommentRepository: InMemoryQuestionCommentRepository
-let sut: FetchCommentsQuestion
+let sut: FetchCommentsQuestionUseCase
 
 describe('Fetch Comments Question Use Case', () => {
     beforeEach(() => {
         inMemoryQuestionCommentRepository = new InMemoryQuestionCommentRepository()
-        sut = new FetchCommentsQuestion(inMemoryQuestionCommentRepository)
+        sut = new FetchCommentsQuestionUseCase(inMemoryQuestionCommentRepository)
     })
 
     it('should be able to fetch all comments on question', async () => {

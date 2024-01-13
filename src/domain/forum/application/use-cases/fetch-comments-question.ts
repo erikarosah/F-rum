@@ -10,7 +10,7 @@ interface FetchCommentsQuestionResponse {
     commentsQuestion: QuestionComment[]
 }
 
-export class FetchCommentsQuestion {
+export class FetchCommentsQuestionUseCase {
     constructor(private questionCommentRepository: QuestionCommentRepository) { }
 
     async execute({
