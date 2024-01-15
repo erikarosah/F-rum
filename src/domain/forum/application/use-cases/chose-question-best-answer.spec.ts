@@ -24,7 +24,7 @@ describe('Chose Question Best Answer Use Case', () => {
 
 		await inMemoryquestionRepository.create(question);
 		await inMemoryAnswerRepository.create(answer);
-        
+
 		await sut.execute({
 			answerId: answer.id.toString(),
 			authorId: question.authorId.toString()
@@ -43,13 +43,12 @@ describe('Chose Question Best Answer Use Case', () => {
 
 		await inMemoryquestionRepository.create(question);
 		await inMemoryAnswerRepository.create(answer);
-        
+
 		await expect(() =>
 			sut.execute({
 				answerId: answer.id.toString(),
 				authorId: 'author-2'
 			})
 		).rejects.toBeInstanceOf(Error);
-
 	});
 });
