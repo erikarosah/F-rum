@@ -2,6 +2,7 @@ import { makeQuestion } from '@/factories/make-question';
 import { EditAnswerUseCase } from './edit-answer';
 import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
+import { NotAllowedError } from './errors/not-allowed-error';
 
 let inMemoryQuestionRepository: InMemoryQuestionsRepository;
 let sut: EditAnswerUseCase;
@@ -41,12 +42,13 @@ describe('Edit Answer Use Case', () => {
 
 		await inMemoryQuestionRepository.create(question);
 
-		await expect(() =>
-			sut.execute({
-				authorId: 'author-2',
-				questionId: '1',
-				content: 'Some new content'
-			})
-		).rejects.toBeInstanceOf(Error);
+		const result = await sut.execute({
+			authorId: 'author-2',
+			questionId: '1',
+			content: 'Some new content'
+		})
+
+		expect(result.isLeft()).toBe(true)
+		expect(result.value).toBeInstanceOf(NotAllowedError)
 	});
 });

@@ -19,7 +19,7 @@ type CommentOnQuestionUseCaseResponse = Either<
 export class CommentOnQuestionUseCase {
     constructor(
         private questionRepository: QuestionRepository,
-        private questionComment: QuestionCommentRepository
+        private questionCommentRepository: QuestionCommentRepository
     ) { }
 
     async execute({
@@ -39,7 +39,7 @@ export class CommentOnQuestionUseCase {
             content,
         })
 
-        await this.questionComment.create(questionComment)
+        await this.questionCommentRepository.create(questionComment)
 
         return right({
             questionComment

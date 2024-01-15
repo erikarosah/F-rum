@@ -10,15 +10,15 @@ describe('Answer Question Use Case', () => {
 		sut = new AnswerQuestionUseCase(inMemoryAnswersRepository);
 	});
 
-	it('ahould be able to create an asnwer', async () => {
+	it('should be able to create an asnwer', async () => {
 
-		const { answer } = await sut.execute({
+		const result = await sut.execute({
 			instructorId: '1',
 			questionId: '1',
 			content: 'New answer'
 		});
 
-		expect(answer.content).toEqual('New answer');
-		expect(inMemoryAnswersRepository.items[0].id).toEqual(answer.id);
+		expect(result.isRight()).toEqual(true);
+		expect(inMemoryAnswersRepository.items[0]).toEqual(result.value?.answer);
 	});
 });

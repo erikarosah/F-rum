@@ -1,8 +1,6 @@
 import { Either, left, right } from '@/core/types/either'
 import { AnswerComment } from '../../enterprise/entities/answer-comments'
 import { AnswerCommentRepository } from '../repositories/answer-comment-repository'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
-
 
 interface FetchCommentsOfAnswerRequest {
     answerId: string,
@@ -10,7 +8,7 @@ interface FetchCommentsOfAnswerRequest {
 }
 
 type FetchCommentsOfAnswerResponse = Either<
-    ResourceNotFoundError,
+    null,
     { commentsOfAnswer: AnswerComment[] }
 >
 
@@ -22,10 +20,6 @@ export class FetchCommentsOfAnswerUseCase {
         page
     }: FetchCommentsOfAnswerRequest): Promise<FetchCommentsOfAnswerResponse> {
         const commentsOfAnswer = await this.AnswerCommentRepository.findManyByAnswerId({ page }, answerId)
-
-        if (commentsOfAnswer.length === 0) {
-            return left(new ResourceNotFoundError())
-        }
 
         return right({
             commentsOfAnswer

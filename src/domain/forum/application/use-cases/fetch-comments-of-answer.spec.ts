@@ -21,20 +21,20 @@ describe('Fetch Comments Of Answer Use Case', () => {
             )
         }
 
-        const { commentsAnswer } = await sut.execute({
+        const result = await sut.execute({
             page: 2,
             answerId: '1',
         })
 
-        expect(commentsAnswer).toHaveLength(2)
+        expect(result.value?.commentsOfAnswer).toHaveLength(2)
     })
 
     it('should not be able to fetch comments on question if not exists', async () => {
-        await expect(() =>
-            sut.execute({
-                answerId: '2',
-                page: 1
-            })
-        ).rejects.toBeInstanceOf(Error)
+        const result = await sut.execute({
+            answerId: '2',
+            page: 1
+        })
+
+        expect(result.value?.commentsOfAnswer).toHaveLength(0)
     })
 })

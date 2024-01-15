@@ -30,4 +30,14 @@ export class InMemoryQuestionCommentRepository implements QuestionCommentReposit
 
         return commentsQuestion;
     }
+
+    async findBySlug(slug: string) {
+        const question = this.items.find((item) => item.slug.value === slug);
+
+        if (!question) {
+            return null;
+        }
+
+        return question;
+    }
 }

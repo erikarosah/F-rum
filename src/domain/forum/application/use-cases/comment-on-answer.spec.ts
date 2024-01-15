@@ -29,5 +29,4 @@ describe('Comment On Answer Use Case', () => {
 
         expect(inMemoryAnswerCommentRepository.Items[0].content).toEqual('some content answer comment')
     })
-
 })

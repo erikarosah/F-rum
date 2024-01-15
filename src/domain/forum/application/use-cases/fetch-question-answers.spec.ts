@@ -24,23 +24,23 @@ describe('Fetch Question Answers Use Case', () => {
             )
         }
 
-        const { answers } = await sut.execute({
+        const result = await sut.execute({
             page: 1,
             questionId: '1'
         })
 
-        expect(answers).toHaveLength(3)
+        expect(result.value?.answers).toHaveLength(3)
     })
 
     it('should not be able to fetch answers if not exists', async () => {
         makeQuestion({}, new UniqueEntityID('1'))
 
-        await expect(() =>
-            sut.execute({
-                page: 1,
-                questionId: '1'
-            })
-        ).rejects.toBeInstanceOf(Error)
+        const result = await sut.execute({
+            page: 1,
+            questionId: '1'
+        })
+
+        expect(result.value?.answers).toHaveLength(0)
     })
 
     it('should not be able to fetch pagination answers', async () => {
@@ -52,11 +52,11 @@ describe('Fetch Question Answers Use Case', () => {
             )
         }
 
-        const { answers } = await sut.execute({
+        const result = await sut.execute({
             page: 2,
             questionId: '1'
         })
 
-        expect(answers).toHaveLength(2)
+        expect(result.value?.answers).toHaveLength(2)
     })
 })
