@@ -1,6 +1,7 @@
+import { QuestionAttachmentRepository } from '@/domain/forum/application/repositories/question-attachment-repository'
 import { QuestionAttachment } from '@/domain/forum/enterprise/entities/question-attachment'
 
-export class InMemoryQuestionAttachmentsRepository implements InMemoryQuestionAttachmentsRepository {
+export class InMemoryQuestionAttachmentsRepository implements QuestionAttachmentRepository {
     public items: QuestionAttachment[] = []
 
     async findManyByQuestionId(questionId: string) {
@@ -9,5 +10,11 @@ export class InMemoryQuestionAttachmentsRepository implements InMemoryQuestionAt
         )
 
         return questionAttachments
+    }
+
+    async deleteManyByQuestionId(questionId: string) {
+        const questionAttachments = this.items.filter((item) => item.attachmentId.toString() != questionId)
+
+        this.items = questionAttachments
     }
 }
