@@ -1,8 +1,8 @@
 import { InMemoryAnswersRepository } from '@/test/repositories/in-memory-answers-repository';
 import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository';
 import { ChoseQuestionBestAnswer } from './chose-question-best-answer';
-import { makeQuestion } from '@/factories/make-question';
-import { makeAnswer } from '@/factories/make-answer';
+import { makeQuestion } from '@/test/factories/make-question';
+import { makeAnswer } from '@/test/factories/make-answer';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import { NotAllowedError } from './errors/not-allowed-error';
 import { InMemoryQuestionAttachmentsRepository } from '@/test/repositories/in-memory-question-attachment-repository';

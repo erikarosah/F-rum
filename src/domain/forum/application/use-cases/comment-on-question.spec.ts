@@ -1,7 +1,7 @@
 import { InMemoryQuestionCommentRepository } from '@/test/repositories/in-memory-question-comment-repository'
 import { CommentOnQuestionUseCase } from './comment-on-question'
 import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository'
-import { makeQuestion } from '@/factories/make-question'
+import { makeQuestion } from '@/test/factories/make-question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { InMemoryQuestionAttachmentsRepository } from '@/test/repositories/in-memory-question-attachment-repository'
 

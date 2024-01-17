@@ -1,11 +1,11 @@
-import { makeQuestion } from '@/factories/make-question';
+import { makeQuestion } from '@/test/factories/make-question';
 import { EditAnswerUseCase } from './edit-answer';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import { NotAllowedError } from './errors/not-allowed-error';
 import { InMemoryAnswersRepository } from '@/test/repositories/in-memory-answers-repository';
 import { InMemoryAnswerAttachmentsRepository } from '@/test/repositories/in-memory-answer-attachment-repository';
-import { makeAnswer } from '@/factories/make-answer';
-import { makeAnswerAttachment } from '@/factories/make-answer-attachment';
+import { makeAnswer } from '@/test/factories/make-answer';
+import { makeAnswerAttachment } from '@/test/factories/make-answer-attachment';
 
 let inMemoryAnswerRepository: InMemoryAnswersRepository
 let inMemoryAnswerAttachmentRepository: InMemoryAnswerAttachmentsRepository

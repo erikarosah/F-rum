@@ -1,7 +1,7 @@
 import { InMemoryAnswerCommentRepository } from '@/test/repositories/in-memory-answer-comment-repository'
 import { InMemoryAnswersRepository } from '@/test/repositories/in-memory-answers-repository'
 import { CommentOnAnswerUseCase } from './comment-on-answer'
-import { makeAnswer } from '@/factories/make-answer'
+import { makeAnswer } from '@/test/factories/make-answer'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { AnswerComment } from '../../enterprise/entities/answer-comments'
 import { InMemoryAnswerAttachmentsRepository } from '@/test/repositories/in-memory-answer-attachment-repository'
