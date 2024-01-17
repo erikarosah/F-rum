@@ -11,8 +11,8 @@ export function makeAnswer(
 		questionId: new UniqueEntityID(),
 		content: faker.lorem.text(),
 		...override
-	}, 
-	id,
+	},
+		id,
 	);
 
 	return answer;
