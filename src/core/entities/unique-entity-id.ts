@@ -8,10 +8,14 @@ export class UniqueEntityID {
 	}
 
 	toValue() {
-		return this.value; 
+		return this.value;
 	}
-   
+
 	constructor(value?: string) {
 		this.value = value ?? randomUUID();
+	}
+
+	equals(id: UniqueEntityID) {
+		return id.toValue() === this.value
 	}
 }
